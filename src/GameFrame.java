@@ -22,7 +22,8 @@ public class GameFrame extends JFrame {
 	
 	public GameFrame() {
 		super("단어 게임");
-		setSize(1200,800);
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		//Image normalImage = normalIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
 		//Image rolloverImage = rolloverIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
 		//Image pressedImage = pressedIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
@@ -31,6 +32,8 @@ public class GameFrame extends JFrame {
 		makeMenu();
 		makeToolBar();
 		makeSplitPane();
+		
+		
 		setVisible(true);
 		
 	
@@ -66,7 +69,7 @@ public class GameFrame extends JFrame {
 		startBtn.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				String word = wordList.getWord();
+				//String word = wordList.getWord();
 				//gamePanel.setWord(word);
 			}
 		}
@@ -80,17 +83,20 @@ public class GameFrame extends JFrame {
 	private void makeSplitPane() {
 		JSplitPane hPane  = new JSplitPane();
 		hPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-		hPane.setDividerLocation(900);
+		hPane.setDividerLocation(1200);
 		getContentPane().add(hPane,BorderLayout.CENTER);
 		
 		JSplitPane vPane  = new JSplitPane();
 		vPane.setOrientation(JSplitPane.VERTICAL_SPLIT);
-		vPane.setDividerLocation(300);
+		vPane.setDividerLocation(320);
 		hPane.setRightComponent(vPane);
 		hPane.setLeftComponent(gamePanel);
 		
 		vPane.setTopComponent(scorePanel);
 		vPane.setBottomComponent(editPanel);
+		
+		hPane.setEnabled(false);
+		vPane.setEnabled(false);
 	}
 }
 

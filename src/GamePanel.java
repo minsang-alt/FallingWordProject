@@ -28,8 +28,10 @@ public class GamePanel extends JPanel{
 		this.gameFrame = gameFrame;
 		setLayout(new BorderLayout());
 		groundPanel = new GroundPanel();
+		
 		WordMaker wordMaker = new WordMaker();
 		wordMaker.start();
+		
 		add(groundPanel,BorderLayout.CENTER);
 		
 		JPanel inputPanel = new JPanel();
@@ -39,12 +41,19 @@ public class GamePanel extends JPanel{
 			public void actionPerformed(ActionEvent e)
 			{
 				JTextField t = (JTextField)e.getSource();
-				System.out.println(wordLabels.size());
+				
 				for(int i=0; i<wordLabels.size();i++)
 				{
 					String word = wordLabels.get(i).getText();
 					//사용자가 입력한값과 같으면
 					if(t.getText().equals(word)) {
+						int money = wordLabels.get(i).getMoney();
+						int score = wordLabels.get(i).getScore();
+						
+						scorePanel.increaseScore(score);
+						
+						
+						//라벨 제거
 						wordLabels.get(i).setVisible(false);
 						wordLabels.get(i).setValid(false);
 						wordLabels.remove(i);
@@ -71,9 +80,11 @@ public class GamePanel extends JPanel{
 			String word = null;
 			while(true)
 			{
-				word = wordList.getWord();
+				//단어를 랜덤하게 받아와 라벨생성
+				FwLabel wLabel = new FwLabel(wordList);
 				
-				FallingLabel fallinglabel = new FallingLabel(word);
+				
+				FallingLabel fallinglabel = new FallingLabel(wLabel);
 				fallinglabel.start();
 				try {
 					sleep(3000);
@@ -87,29 +98,28 @@ public class GamePanel extends JPanel{
 	}
 	
 	class FallingLabel extends Thread{
-		String word;
-		public FallingLabel(String word)
+		FwLabel wLabel;
+		public FallingLabel(FwLabel wLabel)
 		{
-			this.word = word;
+			this.wLabel = wLabel;
 			
 		}
 		
 		@Override
 		public void run() {
 			//좌표값 설정 ->약간의 수정 필요
-			int x = (int)(Math.random()*(gameFrame.getWidth()-100));
+			int x = (int)(Math.random()*(1100));
 			int y = 10;
-			
-			//단어를 랜덤하게 받아와 라벨 생성
-			FwLabel wLabel = new FwLabel(word);
-			
+	
+
+
 			wLabel.setLocation(x,y);
-			wLabel.setForeground(Color.red);
+			
 			wordLabels.add(wLabel);
 			groundPanel.add(wLabel);
 			
 			while(y < 500&&wLabel.getValid()) {
-				y = wLabel.getY()+5; //5픽셀 씩 아래로 이동
+				y = wLabel.getY()+3; //3픽셀 씩 아래로 이동
 				wLabel.setLocation(x,y);
 				try {
 					sleep(100); //떨어지는 속도
@@ -121,13 +131,19 @@ public class GamePanel extends JPanel{
 			if(y>=500 || wLabel.getValid()==false)
 			{
 				
-			//	wordLabels.remove(wLabel);
-				groundPanel.remove(wLabel);
+			//바닥에 닿거나 사용자의 입력에 의해 없어진 단어를 패널상에서 제거
+				groundPanel.remove(wLabel); 
 				groundPanel.repaint();
+			
+				
+				
 			}
 			if(y>=500)
 			{
+				//바닥에 닿은 라벨을 벡터에서 제거
 				wordLabels.remove(0);
+				//아바타의 피를 하나깎는다.
+				scorePanel.damageHeart();
 			}
 			
 			

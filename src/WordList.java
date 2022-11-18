@@ -2,21 +2,24 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
 public class WordList {
-	private Vector<String> wordVector = new Vector<String>();
-	
+	private Vector<String> engWordVector = new Vector<String>();
+	private Vector<String> korWordVector = new Vector<String>();
 	public WordList() {
-		wordVector.add("coputer");
-		wordVector.add("Java");
-		wordVector.add("I love you");
-		wordVector.add("숙제는 더 싫다");
-		wordVector.add("공부는 재밌다.");
-		wordVector.add("You make me happy");
+		
 		
 		try {
-			Scanner scanner = new Scanner(new FileReader("words.txt"));
+			//영어 텍스트 받아오기
+			Scanner scanner = new Scanner(new FileReader("engwords.txt"));
+			
 			while(scanner.hasNext()) {
 				String word = scanner.nextLine();
-				wordVector.add(word);
+				engWordVector.add(word);
+			}
+			//한글 텍스트 받아오기
+			scanner = new Scanner(new FileReader("korWord.txt"));
+			while(scanner.hasNext()) {
+				String word = scanner.nextLine();
+				korWordVector.add(word);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -26,9 +29,13 @@ public class WordList {
 		
 	}
 	
-	public String getWord() {
-		int index  = (int)(Math.random()*wordVector.size());
-		return wordVector.get(index);
+	public String engGetWord() {
+		int index  = (int)(Math.random()*engWordVector.size());
+		return engWordVector.get(index);
 				
+	}
+	public String korGetWord() {
+		int index  = (int)(Math.random()*korWordVector.size());
+		return korWordVector.get(index);
 	}
 }
