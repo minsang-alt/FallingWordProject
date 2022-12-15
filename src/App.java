@@ -11,7 +11,7 @@ public class App {
            charset.set(null,null);
        }
        catch(Exception e){
-       }
+       }//ad
 		
 		SingletonClass.getInstance().intro.setVisible(true);
 
