@@ -27,9 +27,8 @@ public class FwLabel extends JLabel {
 		//라벨 빨강색,노랑색,파랑색 무작위로 선정(우선순위는 오른쪽부터)
 		randomWord();
 		setFont(new Font("Gothic",Font.BOLD,20));
-		setSize(120,40);
-		
-		
+		setSize(200,40);
+	
 		
 	}
 	public void randomWord() {

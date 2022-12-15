@@ -7,14 +7,7 @@ import javax.swing.*;
 
 
 public class GameFrame extends JFrame {
-	/*
-	 * private ImageIcon normalIcon = new ImageIcon("nomal.png.jpg"); private
-	 * ImageIcon rolloverIcon = new ImageIcon("rollover.jpg"); private ImageIcon
-	 * pressedIcon = new ImageIcon("pressed.jpg");
-	 */
-	
-	//private JButton startBtn = new JButton(normalIcon);
-	
+
 	
 	  private ImageIcon startIcon = new ImageIcon("start-removebg-preview.png");
 	  private ImageIcon pauseIcon = new ImageIcon("pause1-removebg-preview.png");
@@ -25,7 +18,7 @@ public class GameFrame extends JFrame {
 	 
 	
 	private WordList wordList = new WordList();
-	private ScorePanel scorePanel = new ScorePanel();
+	private ScorePanel scorePanel = new ScorePanel(this);
 	
 	private EditPanel editPanel  = new EditPanel();
 	
@@ -36,18 +29,15 @@ public class GameFrame extends JFrame {
 	public GameFrame() {
 		super("단어 게임");
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		//Image normalImage = normalIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
-		//Image rolloverImage = rolloverIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
-		//Image pressedImage = pressedIcon.getImage().getScaledInstance(30,30,Image.SCALE_DEFAULT);
-	//	startBtn.setPressedIcon(pressedIcon);
-	//	startBtn.setRolloverIcon(rolloverIcon);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 		makeMenu();
 		makeToolBar();
 		makeSplitPane();
 		
 		
-		setVisible(true);
+		
+		setVisible(false);
 		
 	
 	}
@@ -55,17 +45,6 @@ public class GameFrame extends JFrame {
 	private void makeMenu() {
 		GameMenuBar bar = new GameMenuBar();
 		this.setJMenuBar(bar);
-		/*
-		 * JMenu fileMenu = new JMenu("File"); JMenu editMenu = new JMenu("Edit"); JMenu
-		 * sourceMenu = new JMenu("source"); bar.add(fileMenu); bar.add(editMenu);
-		 * bar.add(sourceMenu);
-		 * 
-		 * 
-		 * JMenuItem newItem = new JMenuItem("New File"); JMenuItem openItem = new
-		 * JMenuItem("Open File"); JMenuItem exitItem = new JMenuItem("Exit File");
-		 * fileMenu.add(newItem); fileMenu.add(openItem); fileMenu.addSeparator();
-		 * fileMenu.add(exitItem);
-		 */
 		
 		
 	}
@@ -97,6 +76,8 @@ public class GameFrame extends JFrame {
 			pauseBtn.setEnabled(false);
 			stopBtn.setEnabled(true);
 			
+			
+			
 			gamePanel.pause();
 		}
 	});
@@ -109,6 +90,10 @@ public class GameFrame extends JFrame {
 			startBtn.setEnabled(true);
 			pauseBtn.setEnabled(false);
 			stopBtn.setEnabled(false);
+			
+			//스테이지는 그대로 단계만 1단계로 초기화 그리고 하트와 점수도 초기화
+			scorePanel.initGame();
+			
 			gamePanel.stop();
 		}
 	});
