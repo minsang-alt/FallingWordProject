@@ -69,3 +69,8 @@
 
 
 ![image](https://user-images.githubusercontent.com/82764703/208079419-1038529a-2b93-4a7d-b4b6-2d1625d0ade3.png)
+
+<h4>단어 파일 생성 및 읽기</h4>
+
+![image](https://user-images.githubusercontent.com/82764703/208123196-e94c6119-5846-444a-9044-7056b3d3dfe6.png)
+
