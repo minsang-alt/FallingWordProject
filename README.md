@@ -52,3 +52,18 @@
 
 ![image](https://user-images.githubusercontent.com/82764703/208068176-ae5c31c7-45ec-4cb0-9998-4bdeecda048b.png)
 
+
+<h3>프로그램 소개</h3>
+
+<h4>인트로 화면</h4>
+![image](https://user-images.githubusercontent.com/82764703/208078522-da0179be-2262-47f3-afff-d5b0e7b89d60.png)
+
+<h4>게임시작</h4>
+
+![image](https://user-images.githubusercontent.com/82764703/208078724-cffc9acc-652f-4e0c-b95c-e0c95df48e3f.png)
+
+<h4>게임 일시정지 화면</h4>
+![image](https://user-images.githubusercontent.com/82764703/208079298-f8dd3a9e-0701-46e6-b45d-6eca92362fa2.png)
+
+
+![image](https://user-images.githubusercontent.com/82764703/208079419-1038529a-2b93-4a7d-b4b6-2d1625d0ade3.png)
