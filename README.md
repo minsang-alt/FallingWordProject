@@ -56,6 +56,7 @@
 <h3>프로그램 소개</h3>
 
 <h4>인트로 화면</h4>
+
 ![image](https://user-images.githubusercontent.com/82764703/208078522-da0179be-2262-47f3-afff-d5b0e7b89d60.png)
 
 <h4>게임시작</h4>
