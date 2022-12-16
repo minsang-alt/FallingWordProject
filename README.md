@@ -64,6 +64,7 @@
 ![image](https://user-images.githubusercontent.com/82764703/208078724-cffc9acc-652f-4e0c-b95c-e0c95df48e3f.png)
 
 <h4>게임 일시정지 화면</h4>
+
 ![image](https://user-images.githubusercontent.com/82764703/208079298-f8dd3a9e-0701-46e6-b45d-6eca92362fa2.png)
 
 
